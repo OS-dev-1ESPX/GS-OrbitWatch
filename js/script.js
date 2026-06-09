@@ -1,11 +1,21 @@
 /* ---- TEMA DE CORES ---- */
 function setTema(classe) {
     document.body.className = classe;
+
+    localStorage.setItem('temaOrbitWatch', classe);
+
     document.querySelectorAll('.tema-barra button').forEach(function(btn) {
         btn.classList.remove('ativo');
     });
+
     var map = { '': 't-azul', 'tema-verde': 't-verde', 'tema-roxo': 't-roxo' };
     document.querySelector('.' + map[classe]).classList.add('ativo');
+}
+
+const temaSalvo = localStorage.getItem('temaOrbitWatch');
+
+if (temaSalvo !== null) {
+    setTema(temaSalvo);
 }
 
 /* ---- SLIDESHOW ---- */
