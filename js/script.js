@@ -4,14 +4,14 @@ function setTema(classe) {
     document.querySelectorAll('.tema-barra button').forEach(function(btn) {
         btn.classList.remove('ativo');
     });
-    var map = { '': 't-azul', 'tema-verde': 't-verde', 'tema-roxo': 't-roxo' };
+    const map = { '': 't-azul', 'tema-verde': 't-verde', 'tema-roxo': 't-roxo' };
     document.querySelector('.' + map[classe]).classList.add('ativo');
 }
 
 /* ---- SLIDESHOW ---- */
-var slideAtual = 0;
-var slides = document.querySelectorAll('.slide');
-var dots   = document.querySelectorAll('.dot');
+let slideAtual = 0;
+const slides = document.querySelectorAll('.slide');
+const dots   = document.querySelectorAll('.dot');
 
 function irParaSlide(idx) {
     slides[slideAtual].classList.remove('ativo');
@@ -40,11 +40,11 @@ document.addEventListener('keydown', function(e) {
 
 /* ---- FORMULÁRIO ---- */
 function enviarFormulario() {
-    var valido = true;
+    let valido = true;
 
-    var nome   = document.getElementById('nome');
-    var email  = document.getElementById('email');
-    var regiao = document.getElementById('regiao');
+    const nome   = document.getElementById('nome');
+    const email  = document.getElementById('email');
+    const regiao = document.getElementById('regiao');
 
     [nome, email, regiao].forEach(function(campo) {
         campo.classList.remove('erro');
@@ -59,7 +59,7 @@ function enviarFormulario() {
         valido = false;
     }
 
-    var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email.value.trim() || !regexEmail.test(email.value.trim())) {
         email.classList.add('erro');
         document.getElementById('erro-email').classList.add('visivel');
@@ -79,7 +79,7 @@ function enviarFormulario() {
 }
 
 /* ---- QUIZ ---- */
-var perguntas = [
+const perguntas = [
     {
         pergunta: "Qual agência da NASA monitora eventos naturais em tempo real através da API EONET?",
         opcoes: ["Earth Observatory Natural Event Tracker", "National Oceanic Atmospheric Admin", "Jet Propulsion Laboratory", "Goddard Space Flight Center"],
@@ -142,17 +142,17 @@ var perguntas = [
     }
 ];
 
-var quizAtual = 0;
-var pontuacao = 0;
-var respondido = false;
+let quizAtual = 0;
+let pontuacao = 0;
+let respondido = false;
 
 function renderPergunta() {
     respondido = false;
-    var p = perguntas[quizAtual];
-    var progresso = (quizAtual / perguntas.length) * 100;
+    const p = perguntas[quizAtual];
+    const progresso = (quizAtual / perguntas.length) * 100;
     document.getElementById('quiz-progress').style.width = progresso + '%';
 
-    var html = '<div class="quiz-pergunta">';
+    let html = '<div class="quiz-pergunta">';
     html += '<div class="quiz-numero">Pergunta ' + (quizAtual + 1) + ' de ' + perguntas.length + '</div>';
     html += '<h3>' + p.pergunta + '</h3>';
     html += '<div class="quiz-opcoes">';
@@ -173,9 +173,9 @@ function responder(idx) {
     if (respondido) return;
     respondido = true;
 
-    var p = perguntas[quizAtual];
-    var botoes = document.querySelectorAll('.quiz-opcao');
-    var feedback = document.getElementById('quiz-feedback');
+    const p = perguntas[quizAtual];
+    const botoes = document.querySelectorAll('.quiz-opcao');
+    const feedback = document.getElementById('quiz-feedback');
 
     botoes.forEach(function(btn) { btn.disabled = true; });
 
@@ -207,20 +207,20 @@ function mostrarResultado() {
     document.getElementById('quiz-progress').style.width = '100%';
     document.getElementById('quiz-area').style.display = 'none';
 
-    var pct = Math.round((pontuacao / perguntas.length) * 100);
-    var msg, emoji;
+    const pct = Math.round((pontuacao / perguntas.length) * 100);
+    let msg, emoji;
     if (pct >= 90)      { msg = "Especialista em monitoramento climático! 🚀"; emoji = "🏆"; }
     else if (pct >= 70) { msg = "Ótimo conhecimento sobre o tema!";            emoji = "🌟"; }
     else if (pct >= 50) { msg = "Bom começo! Explore mais o OrbitWatch.";      emoji = "📡"; }
     else                { msg = "Continue aprendendo sobre o clima do planeta!"; emoji = "🌍"; }
 
-    var html = '<div class="resultado-pontos">' + emoji + ' ' + pontuacao + '</div>';
+    let html = '<div class="resultado-pontos">' + emoji + ' ' + pontuacao + '</div>';
     html += '<div class="resultado-de">de ' + perguntas.length + ' perguntas certas</div>';
     html += '<div class="resultado-barra"><div class="resultado-fill" id="res-fill" style="width:0%"></div></div>';
     html += '<div class="resultado-msg">' + msg + '</div>';
     html += '<button class="btn-reiniciar" onclick="reiniciarQuiz()">↺ Tentar novamente</button>';
 
-    var res = document.getElementById('quiz-resultado');
+    const res = document.getElementById('quiz-resultado');
     res.innerHTML = html;
     res.classList.add('visivel');
 
