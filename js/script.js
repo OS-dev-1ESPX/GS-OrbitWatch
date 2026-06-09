@@ -1,21 +1,11 @@
 /* ---- TEMA DE CORES ---- */
 function setTema(classe) {
     document.body.className = classe;
-
-    localStorage.setItem('temaOrbitWatch', classe);
-
     document.querySelectorAll('.tema-barra button').forEach(function(btn) {
         btn.classList.remove('ativo');
     });
-
     var map = { '': 't-azul', 'tema-verde': 't-verde', 'tema-roxo': 't-roxo' };
     document.querySelector('.' + map[classe]).classList.add('ativo');
-}
-
-const temaSalvo = localStorage.getItem('temaOrbitWatch');
-
-if (temaSalvo !== null) {
-    setTema(temaSalvo);
 }
 
 /* ---- SLIDESHOW ---- */
@@ -38,6 +28,15 @@ dots.forEach(function(dot) {
 });
 
 setInterval(function() { irParaSlide(slideAtual + 1); }, 5000);
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') {
+        irParaSlide(slideAtual - 1);
+    }
+
+    if (e.key === 'ArrowRight') {
+        irParaSlide(slideAtual + 1);
+    }
+});
 
 /* ---- FORMULÁRIO ---- */
 function enviarFormulario() {
