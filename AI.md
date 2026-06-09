@@ -50,15 +50,7 @@ Nenhuma alteração. Os arquivos foram aceitos e integrados ao projeto conforme 
 
 ---
 
-# AI.md — Registro de Uso de Inteligência Artificial
-
-## Projeto: OrbtitWatch
-## Disciplina: Web Development
-## Ferramenta utilizada: Claude (Anthropic)
-
----
-
-## Interação 1
+## Interação 4
 
 ### O que foi solicitado para a IA
 Criação completa de um projeto web sobre astronomia, atendendo a todos os requisitos do trabalho:
@@ -71,6 +63,10 @@ Criação completa de um projeto web sobre astronomia, atendendo a todos os requ
 - Design responsivo e acessível
 - Separação dos arquivos em CSS e JS modulares
 
+---
+
+## Interação 5
+
 ### O que a IA retornou
 A IA gerou:
 - `index.html`: estrutura HTML completa com todas as seções (nav, hero, slideshow, facts, quiz, formulário, footer)
@@ -82,6 +78,10 @@ A IA gerou:
 - `js/theme.js`: troca de tema com persistência via localStorage
 - `equipe.txt`: template do arquivo de equipe
 - `AI.md`: este arquivo de registro
+
+---
+
+## Interação 6
 
 ### O que foi alterado ou rejeitado e o motivo
 - **Mantido na íntegra**: toda a estrutura HTML, CSS e lógica JavaScript, pois atendeu completamente os requisitos
