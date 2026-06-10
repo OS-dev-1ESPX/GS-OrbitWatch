@@ -1,4 +1,3 @@
-/* ---- TEMA DE CORES ---- */
 function setTema(classe) {
     document.body.className = classe;
     document.querySelectorAll('.tema-barra button').forEach(function(btn) {
@@ -8,7 +7,10 @@ function setTema(classe) {
     document.querySelector('.' + map[classe]).classList.add('ativo');
 }
 
-/* ---- SLIDESHOW ---- */
+var slideAtual = 0;
+var slides = document.querySelectorAll('.slide');
+var dots   = document.querySelectorAll('.dot');
+
 let slideAtual = 0;
 const slides = document.querySelectorAll('.slide');
 const dots   = document.querySelectorAll('.dot');
@@ -38,7 +40,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-/* ---- FORMULÁRIO ---- */
 function enviarFormulario() {
     let valido = true;
 
@@ -78,7 +79,8 @@ function enviarFormulario() {
     }
 }
 
-/* ---- QUIZ ---- */
+
+var perguntas = [
 const perguntas = [
     {
         pergunta: "Qual agência da NASA monitora eventos naturais em tempo real através da API EONET?",
